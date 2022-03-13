@@ -1,0 +1,10 @@
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\bin\Debug\Wordle-Swedish.exe.config
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\bin\Debug\Wordle-Swedish.exe
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\bin\Debug\Wordle-Swedish.pdb
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\obj\Debug\Wordle-Swedish.csproj.AssemblyReference.cache
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\obj\Debug\Wordle_Swedish.Form1.resources
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\obj\Debug\Wordle_Swedish.Properties.Resources.resources
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\obj\Debug\Wordle-Swedish.csproj.GenerateResource.cache
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\obj\Debug\Wordle-Swedish.csproj.CoreCompileInputs.cache
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\obj\Debug\Wordle-Swedish.exe
+C:\Users\alcea\source\repos\SmallerProjects\Wordle-Swedish\obj\Debug\Wordle-Swedish.pdb
