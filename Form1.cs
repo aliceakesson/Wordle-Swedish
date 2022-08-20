@@ -24,6 +24,9 @@ namespace Wordle_Swedish
 
         string currentWord = "ABORT";
 
+        bool youWin = false;
+        bool youLose = false; 
+
         public Form1()
         {
             InitializeComponent();
@@ -31,7 +34,14 @@ namespace Wordle_Swedish
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            
+            if(youWin)
+            {
+
+            } 
+            else if(youLose)
+            {
+
+            }
         }
 
         private void KeyWasPressed(object sender, KeyPressEventArgs e)
@@ -51,6 +61,9 @@ namespace Wordle_Swedish
         //å, ä, ö: 221, 222, 192
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
+
+            if (youLose || youWin)
+                return; 
 
             if((e.KeyValue >= 65 && e.KeyValue <= 90) || e.KeyValue == 221 || e.KeyValue == 222 || e.KeyValue == 192)
             {
@@ -111,10 +124,42 @@ namespace Wordle_Swedish
                     }
                 }
 
+                bool winPossible = true; 
+                for (int i = 0; i < 5; i++)
+                {
+                    if (rows[rowIndex - 1][i].BackColor != Color.Green)
+                    {
+                        winPossible = false;
+                        break;
+                    }
+                }
+                if(winPossible)
+                {
+                    youWin = true;
+                    return; 
+                }
+
                 if (rowIndex < 6)
                 {
                     rowIndex++;
                     letterIndex = 1; 
+                }
+                else if(rowIndex == 6)
+                {
+                    bool win = true; 
+                    for(int i = 0; i < 5; i++)
+                    {
+                        if(rows[rowIndex - 1][i].BackColor != Color.Green)
+                        {
+                            win = false;
+                            break; 
+                        }
+                    }
+
+                    if (win)
+                        youWin = true;
+                    else
+                        youLose = true; 
                 }
 
             }
@@ -128,8 +173,6 @@ namespace Wordle_Swedish
             }
 
         }
-
-
 
 
         private void Form1_Load(object sender, EventArgs e)
