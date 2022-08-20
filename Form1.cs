@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,31 +59,63 @@ namespace Wordle_Swedish
                 {
 
                     rows[rowIndex-1][letterIndex-1].Text = e.KeyCode.ToString();
-                    letterIndex++;
+                    if (letterIndex < 5)
+                        letterIndex++; 
 
                 }
 
             }
             else if(e.KeyCode == Keys.Enter && letterIndex == 5)
             {
-                Console.WriteLine("enter");
-                for(int i = 0; i < 6; i++)
+
+                List<int> keepIndex = new List<int>();
+
+                for (int i = 0; i < 5; i++)
                 {
                     char correctC = currentWord[i];
-                    char answeredC = rows[rowIndex - 1][i + 1].Text[0];  
+                    char answeredC = rows[rowIndex - 1][i].Text[0];
 
                     if(correctC == answeredC)
                     {
-                        rows[rowIndex - 1][i + 1].BackColor = Color.Green; 
+                        rows[rowIndex - 1][i].BackColor = Color.Green;
                     }
                     else
                     {
-
+                        keepIndex.Add(i);
                     }
                 }
 
-                rowIndex++;
-                letterIndex = 1; 
+                List<char> correctLeft = new List<char>();
+                List<char> answeredLeft = new List<char>();
+                for(int i = 0; i < keepIndex.Count; i++)
+                {
+                    correctLeft.Add(currentWord[keepIndex[i]]);
+                    answeredLeft.Add(rows[rowIndex - 1][keepIndex[i]].Text[0]);
+                }
+
+                foreach(char c in correctLeft)
+                {
+                    if(answeredLeft.Contains(c))
+                    {
+                        for(int i = 0; i < 5; i++)
+                        {
+                            char answeredC = rows[rowIndex - 1][i].Text[0];
+                            if(answeredC == c && keepIndex.Contains(i))
+                            {
+                                rows[rowIndex - 1][i].BackColor = Color.Yellow;
+                                answeredLeft.Remove(c);
+                                keepIndex.Remove(i);
+                                break; 
+                            }
+                        }
+                    }
+                }
+
+                if (rowIndex < 6)
+                {
+                    rowIndex++;
+                    letterIndex = 1; 
+                }
 
             }
             else if(e.KeyCode == Keys.Back){
@@ -99,10 +131,6 @@ namespace Wordle_Swedish
 
 
 
-        private void TextEvent(object sender, EventArgs e)
-        {
-
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
